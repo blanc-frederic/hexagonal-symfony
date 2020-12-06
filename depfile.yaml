@@ -1,0 +1,34 @@
+paths:
+  - src
+layers:
+# Hexagonal
+  - name: Application
+        collectors:
+      - type: className
+        regex: ^Application\\
+  - name: Domain
+        collectors:
+      - type: className
+        regex: ^Domain\\
+  - name: Infrastructure
+        collectors:
+      - type: className
+        regex: ^Infrastructure\\
+# Dependances externes
+  - name: Symfony
+    collectors:
+      - type: className
+        regex: ^Symfony\\
+      - type: className
+        regex: ^Infrastructure\\Symfony\\
+ruleset:
+  Application:
+    - Domain
+  Infrastructure:
+    - Application
+    - Domain
+    - Symfony
+  Symfony:
+    - Application
+    - Domain
+    - Infrastructure
