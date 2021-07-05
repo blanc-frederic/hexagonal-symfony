@@ -13,13 +13,21 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
+#    {Context}\:
+#        resource: '../src/{Context}/'
+#        exclude:
+#            - '../src/{Context}/Domain/Entity/'
+#            - '../src/{Context}/Domain/Enum/'
+#            - '../src/{Context}/Domain/Exception/'
+#            - '../src/{Context}/Domain/ValueObject/'
+#            - '../src/{Context}/Infrastructure/Doctrine/Entity'
+#            - '../src/{Context}/Infrastructure/Symfony/Form'
+
+    Shared\:
+        resource: '../src/Shared/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
-            - '../src/Tests/'
+            - '../src/Shared/Infrastructure/Symfony/Kernel.php'
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
